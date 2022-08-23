@@ -17,7 +17,7 @@ class Champion:
     e: Ability
     r: Ability
 
-    def __init__(self, name, passive, q, w, e, r):
+    def __init__(self, name: str, passive: Ability, q: Ability, w: Ability, e: Ability, r: Ability):
         self.name = name
         self.passive = passive
         self.q = q
