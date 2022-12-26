@@ -1,26 +1,9 @@
 from utils.constants import NEW_LINE as NL, TAB
-
-
-class Ability:
-    name: str
-    cooldown: int
-    description: str
-
-    def __init__(self, name: str, cooldown=0, description=""):
-        self.name = name
-        self.cooldown = cooldown
-        self.description = description
-
-    @classmethod
-    def create_steel_tempest(cls):
-
-        name = "Steel Tempest"
-        cooldown = 4
-        description = "Pierces forward using sword, damaging all enemies in a line."
-        return cls(name, cooldown, description)
+from classes.ability import Ability
 
 
 class Champion:
+    """Main class for Champions (in-game characters)"""
     name: str
 
     passive: Ability
@@ -93,11 +76,36 @@ class Champion:
     def create_yasuo(cls):
 
         name = "Yasuo"
-        passive = Ability("Way of the Wanderer")
-        q = Ability.create_steel_tempest()
-        w = Ability("Wind Wall")
-        e = Ability("Sweeping Blade")
-        r = Ability("Last Breath")
+
+        passive = Ability(
+            name="Way of the Wanderer",
+            cooldown=0.0,
+            description="Yasuo passively creates a shield while walking or dashing. Blocks the next incoming damage."
+        )
+
+        q = Ability(
+            name="Steel Tempest",
+            cooldown=5.0,
+            description="Pierces forward using sword, damaging all enemies in a line."
+        )
+
+        w = Ability(
+            name="Wind Wall",
+            cooldown=15.0,
+            description="Creates a wall that blocks all projectiles that touch it."
+        )
+
+        e = Ability(
+            name="Sweeping Blade",
+            cooldown=1.5,
+            description="Yasuo dashes to target enemy unit, dealing damage and allowing for alternate Q use."
+        )
+
+        r = Ability(
+            name="Last Breath",
+            cooldown=36.0,
+            description="Yasuo teleports to target airborne enemy units, holding them in place and dealing damage."
+        )
 
         hp = 100
 
