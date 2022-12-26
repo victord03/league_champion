@@ -4,9 +4,20 @@ from utils.constants import NEW_LINE as NL, TAB
 class Ability:
     name: str
     cooldown: int
+    description: str
 
-    def __init__(self, name: str):
+    def __init__(self, name: str, cooldown=0, description=""):
         self.name = name
+        self.cooldown = cooldown
+        self.description = description
+
+    @classmethod
+    def create_steel_tempest(cls):
+
+        name = "Steel Tempest"
+        cooldown = 4
+        description = "Pierces forward using sword, damaging all enemies in a line."
+        return cls(name, cooldown, description)
 
 
 class Champion:
@@ -83,7 +94,7 @@ class Champion:
 
         name = "Yasuo"
         passive = Ability("Way of the Wanderer")
-        q = Ability("Steel Tempest")
+        q = Ability.create_steel_tempest()
         w = Ability("Wind Wall")
         e = Ability("Sweeping Blade")
         r = Ability("Last Breath")
@@ -131,4 +142,24 @@ class Champion:
         show_e = f"{NL}{TAB}E: {self.e.name}"
         show_r = f"{NL}{TAB}R: {self.r.name}"
 
-        return name + show_passive + show_q + show_w + show_e + show_r
+        show_hp = f"{NL}{TAB}HP: {self.hp_current}/{self.hp_total}"
+
+        level = f"{NL}{TAB}Level: {self.level}"
+        xp = f"{NL}{TAB}XP: {self.xp}"
+
+        melee = f"{NL}{TAB}Melee: {self.melee}"
+        attack_damage = f"{NL}{TAB}Damage: {self.attack_damage}"
+        attack_speed = f"{NL}{TAB}Attack Speed: {self.attack_speed}"
+
+        ability_power = f"{NL}{TAB}Ability Power: {self.ability_power}"
+
+        cooldown_reduction = f"{NL}{TAB}Cooldown Reduction: {self.cooldown_reduction}"
+
+        ms = f"{NL}{TAB}Movement Speed: {self.movement_speed}"
+
+        show_level_related = level + xp
+        show_damage_related = melee + attack_damage + attack_speed
+
+        the_rest = show_hp + show_level_related + show_damage_related + ability_power + cooldown_reduction + ms
+
+        return name + the_rest + show_passive + show_q + show_w + show_e + show_r
