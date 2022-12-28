@@ -1,5 +1,6 @@
 from utils.constants import NEW_LINE as NL, TAB
 from classes.ability import Ability
+from data import champion_data
 
 
 class Champion:
@@ -23,7 +24,9 @@ class Champion:
     attack_range: int
     attack_damage: int
     attack_speed: int
+
     ability_power: int
+
     cooldown_reduction: float
 
     movement_speed: int
@@ -75,51 +78,32 @@ class Champion:
     @classmethod
     def create_yasuo(cls):
 
-        name = "Yasuo"
+        info = champion_data.yasuo_info
 
-        passive = Ability(
-            name="Way of the Wanderer",
-            cooldown=0.0,
-            description="Yasuo passively creates a shield while walking or dashing. Blocks the next incoming damage."
-        )
+        name = info["name"]
 
-        q = Ability(
-            name="Steel Tempest",
-            cooldown=5.0,
-            description="Pierces forward using sword, damaging all enemies in a line."
-        )
+        passive = Ability(info["abilities"]["passive"])
+        q = Ability(info["abilities"]["q"])
+        w = Ability(info["abilities"]["w"])
+        e = Ability(info["abilities"]["e"])
+        r = Ability(info["abilities"]["r"])
 
-        w = Ability(
-            name="Wind Wall",
-            cooldown=15.0,
-            description="Creates a wall that blocks all projectiles that touch it."
-        )
+        hp = info["hp"]
 
-        e = Ability(
-            name="Sweeping Blade",
-            cooldown=1.5,
-            description="Yasuo dashes to target enemy unit, dealing damage and allowing for alternate Q use."
-        )
+        level = info["level"]
+        xp = info["xp"]
+        xp_bar = info["xp_bar"]
 
-        r = Ability(
-            name="Last Breath",
-            cooldown=36.0,
-            description="Yasuo teleports to target airborne enemy units, holding them in place and dealing damage."
-        )
+        melee = info["melee"]
+        attack_range = info["attack_range"]
+        attack_damage = info["attack_damage"]
+        attack_speed = info["attack_speed"]
 
-        hp = 100
+        ability_power = info["ability_power"]
 
-        level = 1
-        xp = 0
-        xp_bar = int()
+        cooldown_reduction = info["cooldown_reduction"]
 
-        melee = True
-        attack_range = 1
-        attack_damage = 40
-        attack_speed = 1.0
-        ability_power = 0
-        cooldown_reduction = 0.0
-        movement_speed = 1.0
+        movement_speed = info["movement_speed"]
 
         return cls(
             name,
