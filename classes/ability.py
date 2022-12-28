@@ -1,5 +1,4 @@
 
-
 class Ability:
     """Main class for abilities of Champions"""
     name: str

@@ -3,6 +3,38 @@ from classes.ability import Ability
 from data import champion_data
 
 
+def create_champion(info_dict: dict):
+
+    champion_variables = dict()
+
+    champion_variables["name"] = info_dict["name"]
+
+    champion_variables["passive"] = Ability(info_dict["abilities"]["passive"])
+    champion_variables["q"] = Ability(info_dict["abilities"]["q"])
+    champion_variables["w"] = Ability(info_dict["abilities"]["w"])
+    champion_variables["e"] = Ability(info_dict["abilities"]["e"])
+    champion_variables["r"] = Ability(info_dict["abilities"]["r"])
+
+    champion_variables["hp"] = info_dict["hp"]
+
+    champion_variables["level"] = info_dict["level"]
+    champion_variables["xp"] = info_dict["xp"]
+    champion_variables["xp_bar"] = info_dict["xp_bar"]
+
+    champion_variables["melee"] = info_dict["melee"]
+    champion_variables["attack_range"] = info_dict["attack_range"]
+    champion_variables["attack_damage"] = info_dict["attack_damage"]
+    champion_variables["attack_speed"] = info_dict["attack_speed"]
+
+    champion_variables["ability_power"] = info_dict["ability_power"]
+
+    champion_variables["cooldown_reduction"] = info_dict["cooldown_reduction"]
+
+    champion_variables["movement_speed"] = info_dict["movement_speed"]
+
+    return champion_variables
+
+
 class Champion:
     """Main class for Champions (in-game characters)"""
     name: str
@@ -31,99 +63,42 @@ class Champion:
 
     movement_speed: int
 
-    def __init__(
-        self,
-        name,
-        passive,
-        q,
-        w,
-        e,
-        r,
-        hp,
-        level,
-        xp,
-        xp_bar,
-        melee,
-        attack_range,
-        attack_damage,
-        attack_speed,
-        ability_power,
-        cooldown_reduction,
-        movement_speed,
-    ):
+    def __init__(self, champion_variables: dict):
 
-        self.name = name
-        self.passive = passive
-        self.q = q
-        self.w = w
-        self.e = e
-        self.r = r
+        self.name = champion_variables["name"]
+        self.passive = champion_variables["passive"]
+        self.q = champion_variables["q"]
+        self.w = champion_variables["w"]
+        self.e = champion_variables["e"]
+        self.r = champion_variables["r"]
 
-        self.hp_total = hp
-        self.hp_current = hp
+        self.hp_total = champion_variables["hp"]
+        self.hp_current = self.hp_total
 
-        self.level = level
-        self.xp = xp
-        self.xp_bar = xp_bar
+        self.level = champion_variables["level"]
+        self.xp = champion_variables["xp"]
+        self.xp_bar = champion_variables["xp_bar"]
 
-        self.melee = melee
-        self.range = attack_range
-        self.attack_damage = attack_damage
-        self.attack_speed = attack_speed
-        self.ability_power = ability_power
-        self.cooldown_reduction = cooldown_reduction
+        self.melee = champion_variables["melee"]
+        self.range = champion_variables["attack_range"]
+        self.attack_damage = champion_variables["attack_damage"]
+        self.attack_speed = champion_variables["attack_speed"]
 
-        self.movement_speed = movement_speed
+        self.ability_power = champion_variables["ability_power"]
+
+        self.cooldown_reduction = champion_variables["cooldown_reduction"]
+
+        self.movement_speed = champion_variables["movement_speed"]
 
     @classmethod
     def create_yasuo(cls):
+        champion_variables = create_champion(champion_data.yasuo_info)
+        return cls(champion_variables)
 
-        info = champion_data.yasuo_info
-
-        name = info["name"]
-
-        passive = Ability(info["abilities"]["passive"])
-        q = Ability(info["abilities"]["q"])
-        w = Ability(info["abilities"]["w"])
-        e = Ability(info["abilities"]["e"])
-        r = Ability(info["abilities"]["r"])
-
-        hp = info["hp"]
-
-        level = info["level"]
-        xp = info["xp"]
-        xp_bar = info["xp_bar"]
-
-        melee = info["melee"]
-        attack_range = info["attack_range"]
-        attack_damage = info["attack_damage"]
-        attack_speed = info["attack_speed"]
-
-        ability_power = info["ability_power"]
-
-        cooldown_reduction = info["cooldown_reduction"]
-
-        movement_speed = info["movement_speed"]
-
-        return cls(
-            name,
-            passive,
-            q,
-            w,
-            e,
-            r,
-            hp,
-            level,
-            xp,
-            xp_bar,
-            melee,
-            attack_range,
-            attack_damage,
-            attack_speed,
-            ability_power,
-            cooldown_reduction,
-            movement_speed,
-        )
+    @classmethod
+    def create_vi(cls):
+        champion_variables = create_champion(champion_data.vi_info)
+        return cls(champion_variables)
 
     def display_info(self) -> str:
 

@@ -84,3 +84,45 @@ yasuo_info = {
     "cooldown_reduction": 0.0,
     "movement_speed": 1.0,
 }
+
+vi_info = {
+    "name": "Vi",
+    "abilities": {
+        "passive": {
+            "name": "Blast Shield",
+            "cooldown": 0.0,
+            "description": "Vi charges a shield over time. The shield can be activated by hitting an enemy with an ability.",
+        },
+        "q": {
+            "name": "Vault Breaker",
+            "cooldown": 12.0,
+            "description": "Vi charges her gauntlets and unleashes a vault shattering punch, carrying her forward. Enemies she hits are knocked back and receive a stack of Denting Blows.",
+        },
+        "w": {
+            "name": "Denting Blows",
+            "cooldown": 0.0,
+            "description": "Vi's punches break her opponent's Armor, dealing bonus damage and granting her Attack Speed.",
+        },
+        "e": {
+            "name": "Relentless Force",
+            "cooldown": 1.0,
+            "description": "Vi's next attack blasts through her target, dealing damage to enemies behind it.",
+        },
+        "r": {
+            "name": "Cease And Desist",
+            "cooldown": 120.0,
+            "description": "Vi runs down an enemy, knocking aside anyone in the way. When she reaches her target she knocks it into the air, jumps after it, and slams it back into the ground.",
+        },
+    },
+    "hp": 100,
+    "level": 1,
+    "xp": 0,
+    "xp_bar": 0,
+    "melee": True,
+    "attack_range": 1,
+    "attack_damage": 10,
+    "attack_speed": 1.0,
+    "ability_power": 0,
+    "cooldown_reduction": 0.0,
+    "movement_speed": 1.0,
+}
