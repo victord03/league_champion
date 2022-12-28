@@ -1,5 +1,6 @@
 
-info_template = {
+"""
+champ_info = {
     "name": "",
     "abilities": {
         "passive": {
@@ -28,7 +29,19 @@ info_template = {
             "description": "",
         },
     },
+    "hp": 100,
+    "level": 1,
+    "xp": 0,
+    "xp_bar": 0,
+    "melee": True,
+    "attack_range": 1,
+    "attack_damage": 10,
+    "attack_speed": 1.0,
+    "ability_power": 0,
+    "cooldown_reduction": 0.0,
+    "movement_speed": 1.0,
 }
+"""
 
 yasuo_info = {
     "name": "Yasuo",
@@ -56,7 +69,18 @@ yasuo_info = {
         "r": {
             "name": "Last Breath",
             "cooldown": 36.0,
-            "description": "Yasuo teleports to target airborne enemy units, holding them in place and dealing damage.",
+            "description": "Yasuo teleports to target airborne enemy unit, holding it in place and dealing damage.",
         },
     },
+    "hp": 100,
+    "level": 1,
+    "xp": 0,
+    "xp_bar": 0,
+    "melee": True,
+    "attack_range": 1,
+    "attack_damage": 40,
+    "attack_speed": 1.0,
+    "ability_power": 0,
+    "cooldown_reduction": 0.0,
+    "movement_speed": 1.0,
 }
