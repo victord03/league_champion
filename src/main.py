@@ -2,6 +2,7 @@ from classes.champion import Champion
 
 
 def main():
+    """Main Func"""
 
     yasuo = Champion.create_yasuo()
     vi = Champion.create_vi()

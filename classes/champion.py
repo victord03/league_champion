@@ -3,7 +3,15 @@ from classes.ability import Ability
 from data import champion_data
 
 
-def create_champion(info_dict: dict):
+def create_champion_dict(info_dict: dict):
+    """
+    Given an argument 'info_dict' containing hero data, found from data/champion_data.py,
+    this function creates a 'champion_variables' dict which will be passed as an argument
+    to the Champion class __init__ function.
+
+    Keys are expected to have the exact class attribute names as a 1-on-1 mapping and
+    assignment is used.
+    """
 
     champion_variables = dict()
 
@@ -36,7 +44,13 @@ def create_champion(info_dict: dict):
 
 
 class Champion:
-    """Main class for Champions (in-game characters)"""
+    """
+    Main class for Champions (in-game characters).
+
+    Each hero ability is created as a class Ability instance (classes.ability.Ability) and the rest
+    of the data are stored as class attributes (str, int, bool, float).
+    """
+
     name: str
 
     passive: Ability
@@ -64,6 +78,11 @@ class Champion:
     movement_speed: int
 
     def __init__(self, champion_variables: dict):
+        """
+        Init for Champion class. Requires a dict with the champion attributes passed
+        as an argument, with keys corresponding exactly to the class attribute names.
+        A 1-on-1 mapping and assignment is used.
+        """
 
         self.name = champion_variables["name"]
         self.passive = champion_variables["passive"]
@@ -92,15 +111,26 @@ class Champion:
 
     @classmethod
     def create_yasuo(cls):
-        champion_variables = create_champion(champion_data.yasuo_info)
+        """
+        Create an instance of the champion Yasuo with the predefined (level 1) stats, found
+        in data/champion_data.py.
+        """
+
+        champion_variables = create_champion_dict(champion_data.yasuo_info)
         return cls(champion_variables)
 
     @classmethod
     def create_vi(cls):
-        champion_variables = create_champion(champion_data.vi_info)
+        """
+        Create an instance of the champion Vi with the predefined (level 1) stats, found
+        in data/champion_data.py.
+        """
+
+        champion_variables = create_champion_dict(champion_data.vi_info)
         return cls(champion_variables)
 
     def display_info(self) -> str:
+        """Displays all Champion information."""
 
         name = f"{NL}{self.name}"
         show_passive = f"{NL}{TAB}Passive: {self.passive.name}"
